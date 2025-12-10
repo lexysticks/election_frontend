@@ -1,0 +1,363 @@
+/* ================================
+   OVERALL PAGE
+=================================== */
+.result-full-page {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #172033;
+  background: #f7f9fc;
+  min-height: 100vh;
+  margin: 70px;
+}
+
+/* TOP HEADER */
+.topbar {
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+  border-bottom: 1px solid #e6e9ef;
+  background: #fff;
+}
+.brand {
+  font-weight: 700;
+  color: #1f7dfa;
+  font-size: 20px;
+}
+.topnav a {
+  margin: 0 12px;
+  font-size: 13px;
+  color: #5d6b7a;
+  text-decoration: none;
+}
+.topnav a.active {
+  color: #1f7dfa;
+}
+.profile-bubble {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffd85b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #122;
+}
+
+/* CONTENT AREA */
+.content {
+  max-width: 1160px;
+  margin: 26px auto;
+  padding: 0 18px;
+}
+
+/* TITLE ROW */
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.election-title {
+  margin: 0;
+  font-size: 28px;
+}
+.updated {
+  color: #7b8794;
+  font-size: 13px;
+  margin-top: 6px;
+}
+.live-pill {
+  background: #e1ffed;
+  color: #0a6f34;
+  padding: 8px 14px;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* ================================
+   STAT CARDS ROW
+=================================== */
+.stat-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 18px;
+  justify-content: center;
+}
+
+/* GENERAL STAT CARD */
+.stat-card {
+  border-radius: 14px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e5e8ef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  flex: 1 1 18%;
+  min-width: 200px;
+  max-width: 270px;
+}
+.stat-card .card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 6px;
+}
+.stat-card .card-main {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: black;
+}
+.stat-card .card-sub {
+  font-size: 0.9rem;
+  color: black;
+}
+
+/* LEADING CANDIDATE CARD */
+.stat-card.lead {
+  background: #fff8e7;
+  border: 2px solid #ffb400 !important;
+  box-shadow: 0 6px 20px rgba(255, 180, 0, 0.25);
+}
+.stat-card.lead .card-main {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #c27c00;
+  text-shadow: 0 1px 0 #fff;
+  letter-spacing: 0.5px;
+}
+.stat-card.lead .card-sub {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #7a5a00;
+}
+
+/* TOTAL VOTES CARD */
+.total-votes-card {
+  background: green;
+  color: white;
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(0, 80, 200, 0.3);
+}
+
+/* ================================
+   MAIN GRID AREA
+=================================== */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+/* PANELS */
+.panel.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #eef2f6;
+}
+.panel-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* MAP AREA */
+.map-wrapper {
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder-map {
+  width: 100%;
+  height: 100%;
+  max-height: 360px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(16, 24, 40, 0.06);
+}
+
+/* LEGEND */
+.legend {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #4b5563;
+}
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* OVERALL RESULTS BARS */
+.result-row {
+  margin-bottom: 12px;
+}
+.result-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 6px;
+  align-items: center;
+}
+.party-name { font-size: 14px; }
+.party-code { font-size: 12px; color: #9aa6b6; font-weight: 500; margin-left:8px; }
+
+.bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bar-bg {
+  flex: 1;
+  height: 12px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  width: 30%;
+  border-radius: 10px 0 0 10px;
+  transition: width 600ms ease;
+}
+.bar-value {
+  width: 50px;
+  text-align: right;
+  font-size: 13px;
+  color: #425466;
+}
+
+/* SECURE CARD */
+.secure-card h4 { margin: 0 0 6px 0; }
+.secure-card p { color: #6b7280; font-size: 13px; }
+
+/* CONTROLS */
+.controls-card {
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.controls-card select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #e6e9ef;
+  background: #fff;
+}
+.refresh-btn {
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: #007b5d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ALERTS */
+.alert {
+  background: #fff1f0;
+  color: #9b2c2c;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+/* ================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 980px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-cards {
+    justify-content: center;
+  }
+
+  .stat-card {
+    flex: 1 1 100%;
+    max-width: 300px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .stat-card {
+    max-width: 300px;
+  }
+
+  .stat-card .card-main {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card {
+    max-width: 100%;
+  }
+
+  .stat-card .card-main {
+    font-size: 1.4rem;
+  }
+}
+/* PIE CHART CONTAINER RESPONSIVE */
+.map-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 360px; /* default desktop height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .map-wrapper {
+    height: 280px;
+    padding: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .map-wrapper {
+    height: 220px;
+    padding: 12px;
+  }
+}
+
+/* Adjust legend font on smaller screens */
+@media (max-width: 480px) {
+  .map-wrapper canvas {
+    max-width: 100%;
+  }
+  .map-wrapper .chartjs-render-monitor {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

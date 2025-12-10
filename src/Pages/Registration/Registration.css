@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: #e6f7f1;
+  color: #007b5d;
+  min-height: 100vh;
+}
+
+.reg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.reg-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.7s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-card h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #007b5d;
+  font-weight: 700;
+}
+
+.reg-card input,
+.reg-card select {
+  margin-bottom: 18px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  border: 2px solid #007b5d;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  transition: 0.3s;
+}
+
+.reg-card input:focus,
+.reg-card select:focus {
+  border-color: #00594d;
+  box-shadow: 0 0 10px rgba(0, 123, 93, 0.3);
+}
+
+.styled-select {
+  appearance: none;
+  padding-right: 40px;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  flex: 1;
+  padding-right: 70px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #007b5d;
+  font-weight: 700;
+  user-select: none;
+}
+
+button[type="submit"] {
+  background: #007b5d;
+  color: #fff;
+  font-weight: 700;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 123, 93, 0.3);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #fff;
+  border-top: 3px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 9999;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.toast.success {
+  background: #2fbba6;
+}
+
+.toast.error {
+  background: #e94b4b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 500px) {
+  .reg-card {
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+
+  .reg-card h2 {
+    font-size: 24px;
+  }
+
+  .reg-card input,
+  .reg-card select {
+    font-size: 15px;
+    padding: 12px 10px;
+  }
+
+  .toggle-password {
+    font-size: 13px;
+  }
+
+  button[type="submit"] {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+.error-input {
+  border-color: #e53e3e !important;
+  background-color: #ffe5e5;
+}
