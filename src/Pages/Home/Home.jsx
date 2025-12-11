@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // add this at the top
+
 import AOS from "aos";
 import Footer from "../Footr/footeer";
 import "aos/dist/aos.css";
@@ -66,21 +68,33 @@ export default function Home() {
   return (
     <>
       {/* ================= HERO SECTION ================= */}
-      <section className="hero">
-        <div className="hero-text" data-aos="fade-right">
-          <h4>Access essential training resources</h4>
-          <h1>
-            Welcome to INEC <br />
-            <span>Learning Management System</span>
-          </h1>
-          <p>Join a community dedicated to ensuring credible and transparent elections.</p>
-          <button className="btn">View All Courses</button>
-        </div>
 
-        <div className="hero-img" data-aos="fade-left">
-          <img src={images[index]} alt="inec img" />
-        </div>
-      </section>
+      <section className="hero">
+ 
+
+  <div className="hero-text" data-aos="fade-right">
+    <h4>Access essential election resources</h4>
+    <h1>
+      Welcome to INEC <br />
+      <span>Voting Management System</span>
+    </h1>
+    <p>
+      Empowering citizens with reliable information to support free, fair, and 
+      credible elections across Nigeria.
+    </p>
+    <p>
+      <Link to="/Login" className="btn">Login</Link>
+    </p>
+  </div>
+
+   <div className="hero-img" data-aos="fade-left">
+    <img src={images[index]} alt="INEC illustration" />
+  </div>
+</section>
+
+    
+
+      
 
       {/* ================= STATS SECTION ================= */}
       <div className="app-container">
