@@ -145,7 +145,7 @@ const Registration = ({ onLogin }) => {
 
         <input
           name="national_id"
-          placeholder="National ID"
+          placeholder="National ID (11 digit)"
           value={formData.national_id}
           onChange={handleChange}
           className={errors.national_id ? "error-input" : ""}
@@ -235,8 +235,15 @@ const Registration = ({ onLogin }) => {
         <button type="submit" disabled={loading}>
           {loading ? <span className="spinner"></span> : "Register"}
         </button>
+         <p className="auth-footer">
+            <span className="auth-link" onClick={() => navigate("/")}>
+              Back to Home
+            </span>
+          </p>
       </form>
+      
     </div>
+    
   );
 };
 
@@ -244,210 +251,5 @@ export default Registration;
 
 
 
-
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import api from "../../api/api";
-// import { statesAndLgas } from "../../data/statesAndLgas";
-// import "./Registration.css";
-
-// const Registration = ({ onLogin }) => {
-//   const navigate = useNavigate();
-
-//   const [formData, setFormData] = useState({
-//     national_id: "",
-//     first_name: "",
-//     last_name: "",
-//     date_of_birth: "",
-//     state: "",
-//     lga: "",
-//     vin: "",
-//     profile_pic: null,
-//     password: "",
-//   });
-
-//   const [showPassword, setShowPassword] = useState(false);
-//   const [loading, setLoading] = useState(false);
-//   const [toast, setToast] = useState({ show: false, message: "", type: "" });
-
-//   const showToast = (message, type = "success") => {
-//     setToast({ show: true, message, type });
-//     setTimeout(() => setToast({ show: false, message: "", type: "" }), 3500);
-//   };
-
-//   const handleChange = (e) => {
-//     const { name, value, files } = e.target;
-
-//     if (name === "state") {
-//       setFormData({ ...formData, state: value, lga: "" });
-//       return;
-//     }
-
-//     if (files) {
-//       setFormData({ ...formData, [name]: files[0] });
-//     } else {
-//       setFormData({ ...formData, [name]: value });
-//     }
-//   };
-
-//   const validateForm = () => {
-//     if (!formData.national_id || !formData.first_name || !formData.last_name) {
-//       showToast("Please fill all required fields.", "error");
-//       return false;
-//     }
-
-//     if (!formData.vin || formData.vin.length !== 17) {
-//       showToast("VIN must be exactly 17 characters.", "error");
-//       return false;
-//     }
-
-//     if (!formData.date_of_birth) {
-//       showToast("Please select your date of birth.", "error");
-//       return false;
-//     }
-
-//     const dob = new Date(formData.date_of_birth);
-//     const today = new Date();
-//     let age = today.getFullYear() - dob.getFullYear();
-//     const m = today.getMonth() - dob.getMonth();
-//     if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-//     if (age < 18) {
-//       showToast("You must be at least 18 years old to register.", "error");
-//       return false;
-//     }
-
-//     if (!formData.profile_pic) {
-//       showToast("Please upload a profile picture.", "error");
-//       return false;
-//     }
-
-//     if (!formData.password || formData.password.length < 6) {
-//       showToast("Password must be at least 6 characters.", "error");
-//       return false;
-//     }
-
-//     return true;
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!validateForm()) return;
-//     setLoading(true);
-
-//     try {
-//       const data = new FormData();
-//       Object.entries(formData).forEach(([key, value]) => value && data.append(key, value));
-
-//       // REGISTER
-//       await api.post("/auth/register/", data, {
-//         headers: { "Content-Type": "multipart/form-data" },
-//       });
-
-//       // LOGIN immediately after register
-//       const loginRes = await api.post("/auth/login/", {
-//         national_id: formData.national_id,
-//         password: formData.password,
-//       });
-
-//       const userData = {
-//         first_name: loginRes.data.user.first_name,
-//         last_name: loginRes.data.user.last_name,
-//         national_id: loginRes.data.user.national_id,
-//         dob: loginRes.data.user.dob,
-//         state: loginRes.data.user.state,
-//         lga: loginRes.data.user.lga,
-//         vin: loginRes.data.user.vin,
-//         profile_pic: loginRes.data.user.profile_pic,
-//       };
-
-//       const accessToken = loginRes.data.access;
-//       const refreshToken = loginRes.data.refresh;
-
-//       // STORE AUTH DATA
-//       localStorage.setItem("user", JSON.stringify(userData));
-//       localStorage.setItem("access_token", accessToken);
-//       localStorage.setItem("refresh_token", refreshToken);
-
-//       // Update App.jsx state
-//       if (onLogin) onLogin(userData, accessToken, refreshToken);
-
-//       showToast("🎉 Registration Successful!", "success");
-
-//       // redirect
-//       setTimeout(() => navigate("/Election"), 1200);
-//     } catch (err) {
-//       console.error(err.response?.data || err);
-//       const msg =
-//         err.response?.data?.message ||
-//         err.response?.data?.error ||
-//         err.response?.data?.detail ||
-//         "Registration failed.";
-//       showToast(`❌ ${msg}`, "error");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="reg-container">
-//       {toast.show && <div className={`toast ${toast.type}`}>{toast.message}</div>}
-
-//       <form onSubmit={handleSubmit} className="reg-card">
-
-//         <h2>Create Account</h2>
-
-//         <input name="national_id" placeholder="National ID"
-//           value={formData.national_id} onChange={handleChange} />
-
-//         <input name="first_name" placeholder="First Name"
-//           value={formData.first_name} onChange={handleChange} />
-
-//         <input name="last_name" placeholder="Last Name"
-//           value={formData.last_name} onChange={handleChange} />
-
-//         <input type="date" name="date_of_birth"
-//           value={formData.date_of_birth} onChange={handleChange} />
-
-//         <select name="state" value={formData.state} onChange={handleChange}>
-//           <option value="">Choose State</option>
-//           {Object.keys(statesAndLgas).map((st) => (
-//             <option key={st} value={st}>{st}</option>
-//           ))}
-//         </select>
-
-//         <select name="lga" value={formData.lga}
-//           onChange={handleChange} disabled={!formData.state}>
-//           <option value="">Choose Local Government</option>
-//           {formData.state &&
-//             statesAndLgas[formData.state].map((lga) => (
-//               <option key={lga} value={lga}>{lga}</option>
-//             ))}
-//         </select>
-
-//         <input name="vin" placeholder="VIN (17 characters)"
-//           value={formData.vin} onChange={handleChange} />
-
-//         <label>Profile Picture</label>
-//         <input type="file" name="profile_pic" onChange={handleChange} />
-
-//         <div className="password-wrapper">
-//           <input type={showPassword ? "text" : "password"} 
-//             name="password" placeholder="Password"
-//             value={formData.password} onChange={handleChange} />
-//           <span className="toggle-password" onClick={() => setShowPassword(!showPassword)}>
-//             {showPassword ? "Hide" : "Show"}
-//           </span>
-//         </div>
-
-//         <button type="submit" disabled={loading}>
-//           {loading ? <span className="spinner"></span> : "Register"}
-//         </button>
-
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Registration;
 
 

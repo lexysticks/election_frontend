@@ -1,5 +1,5 @@
 /* =========================
-   Page Container
+   Main Container
 ========================= */
 .election-container {
   max-width: 1000px;
@@ -128,6 +128,115 @@ h2 {
 }
 
 /* =========================
+   Candidates Header + Search
+========================= */
+/* =========================
+   Candidates Header
+========================= */
+.candidates-header {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  text-align: center;
+  margin-bottom: 60px;
+  gap: 15px; 
+}
+
+.candidates-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* =========================
+   Search Container
+========================= */
+.search-container {
+  display: flex;
+  max-width: 200px; /* smaller width */
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-container:focus-within {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  border: 2px solid #27ae60;
+  border-radius: 10px;
+  outline: none;
+  background-color: #f5f5f5;
+  color: #2c3e50;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.search-input::placeholder {
+  color: #888;
+}
+
+.search-input:focus {
+  background-color: #fff;
+  color: #2c3e50;
+}
+
+.search-btn {
+  padding: 0 1rem;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 10px 10px 0;
+  transition: transform 0.15s, box-shadow 0.3s;
+}
+
+.search-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+}
+
+.search-btn:active {
+  transform: scale(0.95);
+  background: linear-gradient(135deg, #e66b4d, #fda96e);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+  .candidates-header {
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .search-container {
+    max-width: 90%;        /* almost full width on mobile */
+    justify-content: center;
+    margin: 0 auto;        /* center horizontally */
+  }
+
+  .search-input, .search-btn {
+    font-size: 0.95rem;    /* slightly smaller for mobile */
+    padding: 0.5rem 0.7rem;
+  }
+}
+
+
+
+/* =========================
    Candidate Cards
 ========================= */
 .candidate-card {
@@ -182,6 +291,21 @@ h2 {
   font-weight: 500;
 }
 
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.party-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  margin-bottom: 5px;
+}
+
 /* =========================
    Vote Button
 ========================= */
@@ -192,7 +316,7 @@ h2 {
   color: white;
   border: none;
   border-radius: 6px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -209,6 +333,7 @@ h2 {
 /* =========================
    Pagination
 ========================= */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -216,35 +341,65 @@ h2 {
   gap: 15px;
   margin-top: 30px;
   flex-wrap: wrap;
+  text-align: center; 
 }
 
-.page-btn {
-  padding: 10px 18px;
+.pagination span {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  min-width: 100px;  
+  text-align: center; 
+}
+
+/* Buttons */
+.pagination button {
+  padding: 10px 20px;
   background: linear-gradient(135deg, #27ae60, #2ecc71);
   color: white;
-  border-radius: 8px;
   border: none;
-  font-weight: bold;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.page-btn:disabled {
+.pagination button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(39, 174, 96, 0.4);
+}
+
+.pagination button:disabled {
   background: #bdc3c7;
   cursor: not-allowed;
+  color: #7f8c8d;
+  box-shadow: none;
 }
 
-.page-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
+/* Responsive: stack buttons and text on small screens */
+@media (max-width: 480px) {
+  .pagination {
+  
+    gap: 10px;
+    align-items: center;
+  }
+
+  .pagination button {
+    width: 60%;
+    max-width: 100px;
+  }
+
+  .pagination span {
+    min-width: auto;
+    text-align: center;
+    align-items: center;
+  }
 }
 
-.page-number {
-  font-weight: 500;
-  color: #2c3e50;
-}
 
 /* =========================
-   Modal Styling
+   Modal
 ========================= */
 .alert-overlay {
   position: fixed;
@@ -324,7 +479,7 @@ h2 {
 }
 
 /* =========================
-   Responsive - keep image & text side by side
+   Responsive
 ========================= */
 @media (max-width: 768px) {
   .candidate-card {
@@ -345,30 +500,17 @@ h2 {
   .party-votes {
     justify-content: center;
   }
+
+  /* Stack Candidates header + search input */
+  .candidates-header {
+    flex-direction: column;
+    
+    gap: 0.75rem;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
-/* =========================
-   Party Logos
-========================= */
-.party-logo-inline {
-  width: 30px;
-  height: 20px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-  margin-right: 8px;
-}
-
-.party-logo {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-  margin-bottom: 5px;
-}
-.logo-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;   /* space between label and image */
-}

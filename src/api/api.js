@@ -1,14 +1,11 @@
 import axios from "axios";
 
-// Automatically switch baseURL based on environment
-const baseURL =
-  process.env.NODE_ENV === "production"
-    ? "https://election-backend-vmwv.onrender.com"
-    : "http://127.0.0.1:8000";
+// Use only your Render backend
+const baseURL = "https://election-backend-vmwv.onrender.com";
 
 const api = axios.create({
   baseURL,
-  withCredentials: true, // for cookies if needed
+  withCredentials: true, // optional if you later use cookies
 });
 
 // Request interceptor to add JWT token
@@ -26,6 +23,7 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
+
     if (
       error.response &&
       error.response.status === 401 &&
@@ -51,6 +49,7 @@ api.interceptors.response.use(
         }
       }
     }
+
     return Promise.reject(error);
   }
 );

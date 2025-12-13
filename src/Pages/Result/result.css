@@ -1,5 +1,5 @@
 /* ================================
-   OVERALL PAGE
+   BASE STYLES
 =================================== */
 .result-full-page {
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -7,11 +7,12 @@
   background: #f7f9fc;
   min-height: 100vh;
   margin: 70px;
+  margin-top: 70px;
 }
 
 /* TOP HEADER */
 .topbar {
-  margin-top: 70px;
+  margin-top: 140px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,6 +51,7 @@
   max-width: 1160px;
   margin: 26px auto;
   padding: 0 18px;
+  margin-top: 70px;
 }
 
 /* TITLE ROW */
@@ -57,9 +59,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 70px;
 }
 .election-title {
-  margin: 0;
+  margin-top: 40px;
   font-size: 28px;
 }
 .updated {
@@ -70,10 +75,13 @@
 .live-pill {
   background: #e1ffed;
   color: #0a6f34;
-  padding: 8px 14px;
-  border-radius: 18px;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-weight: 700;
   font-size: 12px;
+  text-transform: uppercase;
+  border: 1px solid #0a6f34;
+  white-space: nowrap;
 }
 
 /* ================================
@@ -172,41 +180,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.placeholder-map {
-  width: 100%;
-  height: 100%;
-  max-height: 360px;
+  padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(16, 24, 40, 0.06);
-}
-
-/* LEGEND */
-.legend {
-  display: flex;
-  gap: 12px;
-  margin-top: 12px;
-  flex-wrap: wrap;
-}
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #4b5563;
-}
-.legend-color {
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-
-/* RIGHT PANEL */
-.right-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  box-sizing: border-box;
 }
 
 /* OVERALL RESULTS BARS */
@@ -252,27 +228,59 @@
 .secure-card h4 { margin: 0 0 6px 0; }
 .secure-card p { color: #6b7280; font-size: 13px; }
 
-/* CONTROLS */
-.controls-card {
-  display:flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-}
-.controls-card select {
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid #e6e9ef;
+/* ================================
+   CONTROLS (Election Type Selector + Refresh)
+=================================== */
+.panel.controls-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   background: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
-.refresh-btn {
-  margin-top: 6px;
+
+.panel.controls-card label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #172033;
+}
+
+.panel.controls-card select {
   padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 140px;
+  transition: 0.2s;
+}
+
+.panel.controls-card select:focus {
+  border-color: #007b5d;
+  box-shadow: 0 0 6px rgba(0, 123, 93, 0.2);
+  outline: none;
+}
+
+.refresh-btn {
+  padding: 8px 14px;
   background: #007b5d;
   color: #fff;
-  border: none;
+  font-weight: 600;
+  font-size: 14px;
   border-radius: 6px;
+  border: none;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: #00594d;
 }
 
 /* ALERTS */
@@ -311,6 +319,11 @@
   .stat-card .card-main {
     font-size: 1.6rem;
   }
+
+  .map-wrapper {
+    height: 280px;
+    padding: 16px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -321,43 +334,34 @@
   .stat-card .card-main {
     font-size: 1.4rem;
   }
-}
-/* PIE CHART CONTAINER RESPONSIVE */
-.map-wrapper {
-  width: 100%;
-  max-width: 100%;
-  height: 360px; /* default desktop height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
 
-/* Tablet */
-@media (max-width: 768px) {
-  .map-wrapper {
-    height: 280px;
-    padding: 16px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
   .map-wrapper {
     height: 220px;
     padding: 12px;
   }
-}
 
-/* Adjust legend font on smaller screens */
-@media (max-width: 480px) {
+  .panel.controls-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .panel.controls-card select,
+  .refresh-btn {
+    width: 100%;
+  }
+
+  .live-pill {
+    margin-top: 4px;
+  }
+
   .map-wrapper canvas {
     max-width: 100%;
   }
+
   .map-wrapper .chartjs-render-monitor {
     width: 100% !important;
     height: 100% !important;
   }
 }
+

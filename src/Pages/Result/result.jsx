@@ -25,6 +25,9 @@ export default function Result() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // ✅ Dynamic year
+  const currentYear = new Date().getFullYear();
+
   const loadData = async () => {
     setLoading(true);
     setMessage("");
@@ -85,10 +88,29 @@ export default function Result() {
         <section className="title-row">
           <div>
             <h1 className="election-title">
-              {electionType[0].toUpperCase() + electionType.slice(1)} Election 2025
+              {electionType[0].toUpperCase() + electionType.slice(1)} Election {currentYear}
             </h1>
             <div className="updated">Last Updated: {new Date().toLocaleString()}</div>
           </div>
+
+          <div className="panel card controls-card">
+            <label>Select Election Type</label>
+            <select
+              value={electionType}
+              onChange={(e) => setElectionType(e.target.value)}
+            >
+              {ELECTION_TYPES.map((t) => (
+                <option key={t.key} value={t.key}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
+
+            <button className="refresh-btn" onClick={loadData} disabled={loading}>
+              {loading ? "Refreshing..." : "Refresh"}
+            </button>
+          </div>
+
           <div className="live-pill">LIVE</div>
         </section>
 
@@ -189,24 +211,6 @@ export default function Result() {
               <h4>Your Vote is Secure</h4>
               <p>All transmission is encrypted and confirmed.</p>
             </div>
-
-            <div className="panel card controls-card">
-              <label>Select Election Type</label>
-              <select
-                value={electionType}
-                onChange={(e) => setElectionType(e.target.value)}
-              >
-                {ELECTION_TYPES.map((t) => (
-                  <option key={t.key} value={t.key}>
-                    {t.label}
-                  </option>
-                ))}
-              </select>
-
-              <button className="refresh-btn" onClick={loadData} disabled={loading}>
-                {loading ? "Refreshing..." : "Refresh"}
-              </button>
-            </div>
           </aside>
         </section>
       </main>
@@ -230,11 +234,11 @@ function pickColor(party) {
     SDP: "#ff6600",
     YPP: "#9900cc",
     ADC: "#00cccc",
-    PRP: "#ff3399",
-    ZLP: "#663300",
+    Accord: "#ff3399",
+    AA: "#663300",
     APP: "#ff0000",
-    NRM: "#0000ff",
-    JP: "#66cc66",
+    ADP: "#0000ff",
+    AAC: "#66cc66",
   };
   return map[up] || randomColorFromString(up);
 }

@@ -85,6 +85,9 @@ export default function Home() {
     <p>
       <Link to="/Login" className="btn">Login</Link>
     </p>
+    <p>
+      <Link to="/Result" className="btn">Result</Link>
+    </p>
   </div>
 
    <div className="hero-img" data-aos="fade-left">

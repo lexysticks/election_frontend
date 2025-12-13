@@ -34,8 +34,10 @@ body {
   font-weight: 700;
 }
 
+/* Inputs, selects, file inputs */
 .reg-card input,
-.reg-card select {
+.reg-card select,
+.reg-card input[type="file"] {
   margin-bottom: 18px;
   padding: 14px 12px;
   border-radius: 12px;
@@ -44,17 +46,15 @@ body {
   font-weight: 600;
   outline: none;
   transition: 0.3s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .reg-card input:focus,
-.reg-card select:focus {
+.reg-card select:focus,
+.reg-card input[type="file"]:focus {
   border-color: #00594d;
   box-shadow: 0 0 10px rgba(0, 123, 93, 0.3);
-}
-
-.styled-select {
-  appearance: none;
-  padding-right: 40px;
 }
 
 .password-wrapper {
@@ -142,6 +142,12 @@ button:disabled {
   100% { transform: rotate(360deg); }
 }
 
+.error-input {
+  border-color: #e53e3e !important;
+  background-color: #ffe5e5;
+}
+
+/* MOBILE STYLES */
 @media screen and (max-width: 500px) {
   .reg-card {
     padding: 25px 20px;
@@ -153,22 +159,24 @@ button:disabled {
   }
 
   .reg-card input,
-  .reg-card select {
+  .reg-card select,
+  .reg-card input[type="file"],
+  .password-wrapper input {
     font-size: 15px;
-    padding: 12px 10px;
+    padding: 12px 12px;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 16px;
   }
 
   .toggle-password {
     font-size: 13px;
+    right: 12px;
   }
 
   button[type="submit"] {
     font-size: 16px;
     padding: 12px;
   }
-}
-
-.error-input {
-  border-color: #e53e3e !important;
-  background-color: #ffe5e5;
 }
