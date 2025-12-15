@@ -1,29 +1,33 @@
+/* General body styling */
 body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', sans-serif;
   background-color: #e6f7f1;
   color: #007b5d;
   min-height: 100vh;
-}
-
-.reg-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 20px;
+  padding: 20px;
 }
 
+/* Container for form */
+.reg-container {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Card styling */
 .reg-card {
   background: #fff;
   border-radius: 20px;
   padding: 40px 30px;
-  max-width: 450px;
   width: 100%;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  position: relative;
-  animation: fadeIn 0.7s ease-in-out;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.7s ease-in-out;
+  box-sizing: border-box;
 }
 
 .reg-card h2 {
@@ -34,19 +38,19 @@ body {
   font-weight: 700;
 }
 
-/* Inputs, selects, file inputs */
+/* Inputs, selects, and file inputs */
 .reg-card input,
 .reg-card select,
 .reg-card input[type="file"] {
-  margin-bottom: 18px;
-  padding: 14px 12px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
   border-radius: 12px;
   border: 2px solid #007b5d;
-  font-size: 16px;
+  margin-bottom: 18px;
   font-weight: 600;
   outline: none;
-  transition: 0.3s;
-  width: 100%;
+  transition: all 0.3s ease;
   box-sizing: border-box;
 }
 
@@ -54,31 +58,44 @@ body {
 .reg-card select:focus,
 .reg-card input[type="file"]:focus {
   border-color: #00594d;
-  box-shadow: 0 0 10px rgba(0, 123, 93, 0.3);
+  box-shadow: 0 0 10px rgba(0, 123, 93, 0.2);
 }
 
+/* Labels */
+.reg-card label {
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #007b5d;
+  display: block;
+}
+
+/* Password input with toggle */
 .password-wrapper {
   position: relative;
-  display: flex;
-  align-items: center;
+  width: 100%;
+  margin-bottom: 18px;
 }
 
 .password-wrapper input {
-  flex: 1;
+  width: 100%;
   padding-right: 70px;
 }
 
 .toggle-password {
   position: absolute;
   right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
   font-size: 14px;
-  color: #007b5d;
   font-weight: 700;
+  color: #007b5d;
   user-select: none;
 }
 
+/* Button */
 button[type="submit"] {
+  width: 100%;
   background: #007b5d;
   color: #fff;
   font-weight: 700;
@@ -86,9 +103,8 @@ button[type="submit"] {
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  transition: 0.3s;
   font-size: 17px;
-  margin-top: 10px;
+  transition: all 0.3s ease;
 }
 
 button[type="submit"]:hover {
@@ -101,16 +117,18 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* Spinner */
 .spinner {
   width: 22px;
   height: 22px;
   border: 3px solid #fff;
-  border-top: 3px solid rgba(255,255,255,0.4);
+  border-top: 3px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   display: inline-block;
 }
 
+/* Toast notifications */
 .toast {
   position: fixed;
   top: 20px;
@@ -132,6 +150,27 @@ button:disabled {
   background: #e94b4b;
 }
 
+/* Error inputs */
+.error-input {
+  border-color: #e53e3e !important;
+  background-color: #ffe5e5;
+}
+
+/* Footer links */
+.auth-footer {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-link {
+  color: #007b5d;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px);}
   to { opacity: 1; transform: translateY(0);}
@@ -142,13 +181,8 @@ button:disabled {
   100% { transform: rotate(360deg); }
 }
 
-.error-input {
-  border-color: #e53e3e !important;
-  background-color: #ffe5e5;
-}
-
-/* MOBILE STYLES */
-@media screen and (max-width: 500px) {
+/* RESPONSIVENESS */
+@media screen and (max-width: 600px) {
   .reg-card {
     padding: 25px 20px;
     border-radius: 16px;
@@ -161,22 +195,16 @@ button:disabled {
   .reg-card input,
   .reg-card select,
   .reg-card input[type="file"],
-  .password-wrapper input {
+  .password-wrapper input,
+  button[type="submit"] {
     font-size: 15px;
-    padding: 12px 12px;
-    border-radius: 12px;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 12px;
     margin-bottom: 16px;
+    border-radius: 12px;
   }
 
   .toggle-password {
     font-size: 13px;
     right: 12px;
-  }
-
-  button[type="submit"] {
-    font-size: 16px;
-    padding: 12px;
   }
 }

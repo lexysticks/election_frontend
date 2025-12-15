@@ -66,6 +66,7 @@
 .election-title {
   margin-top: 40px;
   font-size: 28px;
+  word-wrap: break-word;
 }
 .updated {
   color: #7b8794;
@@ -92,7 +93,7 @@
   flex-wrap: wrap;
   gap: 18px;
   margin-top: 18px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* GENERAL STAT CARD */
@@ -106,7 +107,21 @@
   flex: 1 1 18%;
   min-width: 200px;
   max-width: 270px;
+
+  /* New: prevent text overflow */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
+
+.stat-card .card-title,
+.stat-card .card-sub,
+.stat-card .card-main {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .stat-card .card-title {
   font-size: 0.95rem;
   font-weight: 600;
@@ -114,7 +129,7 @@
   margin-bottom: 6px;
 }
 .stat-card .card-main {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 700;
   margin-bottom: 6px;
   color: black;
@@ -131,7 +146,7 @@
   box-shadow: 0 6px 20px rgba(255, 180, 0, 0.25);
 }
 .stat-card.lead .card-main {
-  font-size: 2.3rem;
+  font-size: clamp(1.8rem, 2.3vw, 2.3rem);
   font-weight: 900;
   color: #c27c00;
   text-shadow: 0 1px 0 #fff;
@@ -307,7 +322,6 @@
   .stat-card {
     flex: 1 1 100%;
     max-width: 300px;
-    margin: auto;
   }
 }
 
@@ -317,7 +331,7 @@
   }
 
   .stat-card .card-main {
-    font-size: 1.6rem;
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
   }
 
   .map-wrapper {
@@ -332,7 +346,7 @@
   }
 
   .stat-card .card-main {
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
   }
 
   .map-wrapper {
