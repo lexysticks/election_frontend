@@ -306,10 +306,10 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
           <p><strong>First Name:</strong> {user?.first_name}</p>
           <p><strong>Last Name:</strong> {user?.last_name}</p>
           <p><strong>NIN:</strong> {user?.national_id}</p>
-          <p><strong>DOB:</strong> {user?.dob}</p>
+          {/* <p><strong>DOB:</strong> {user?.dob}</p> */}
           <p><strong>State:</strong> {user?.state}</p>
           <p><strong>LGA:</strong> {user?.lga}</p>
-          <p><strong>VIN:</strong> {user?.vin}</p>
+          {/* <p><strong>VIN:</strong> {user?.vin}</p> */}
 
           {/* Logout button */}
           <div
