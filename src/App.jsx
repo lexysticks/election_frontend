@@ -12,6 +12,7 @@ import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
 import Election from "./Pages/Election/Election";
 import Result from "./Pages/Result/result";
+import TestCors from "./Pages/Testcore/Testcore";
 
 // Dynamic Election Page Wrapper
 const DynamicElectionPage = () => {
@@ -68,6 +69,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Hero" element={<Hero />} />
         <Route path="/Result" element={<Result />} />
+        <Route path="/Testcore" element={<TestCors />} />
         
 
         {/* Protected Routes */}
