@@ -4,9 +4,15 @@ import axios from "axios";
 // const baseURL =
 //   process.env.NODE_ENV === "development"
 // ? "http://127.0.0.1:8000"
-// : "https://electionbackend-production.up.railway.app/";
 
-const baseURL = "https://electionbackend-production.up.railway.app/";
+
+
+// Check if you're in development or production
+const baseURL =
+  process.env.NODE_ENV === "production"
+    ? "https://election-backend-1-4qgb.onrender.com"
+    : "http://127.0.0.1:8000";
+
 
 
 const api = axios.create({
