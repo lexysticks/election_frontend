@@ -75,7 +75,7 @@ export default function Home() {
   <div className="hero-text" data-aos="fade-right">
     <h4>Access essential election resources</h4>
     <h1>
-      Welcome to E-Voting <br />
+      Welcome to i-Voting <br />
       <span>E-Voting Management System</span>
     </h1>
     <p>

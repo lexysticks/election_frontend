@@ -200,7 +200,7 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
             className="logo-text"
             onClick={() => setMenuOpen(false)}
           >
-            Voting System
+            i-Voting System
           </Link>
         </div>
 
